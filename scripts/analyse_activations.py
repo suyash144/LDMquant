@@ -35,7 +35,7 @@ def analyse_activations(model, input_tensor):
         layer.register_forward_hook(get_activation(name))
 
     with torch.no_grad():
-        _ = model(input_tensor)
+        _ = model(input_tensor, c=None)
 
     for name, activation in activations.items():
         print(f"Activation: {name} | Size: {activation.size()} | Values: {activation[:2]} \n")
